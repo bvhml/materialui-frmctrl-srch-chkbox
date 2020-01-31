@@ -7,7 +7,37 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ListItemText from '@material-ui/core/ListItemText';
 import { TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import withRoot from '../withRoot'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root:{
+    height:'100vh',
+    padding: '10vh',
+    backgroundColor: 'grey'
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    width: '5em',
+    maxWidth: 500,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
+  },
+  form:{
+    justifyContent: 'center',
+    padding: '6vh',
+    margin: theme.spacing(1, 1), //8,1
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  image: {
+    //backgroundImage: `url(${require('')})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '300px 75px',
+    backgroundPosition: 'center',
+  },
+}));
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -45,9 +75,10 @@ const MenuProps = {
     'Kelly Snyder',
   ];
   
-const CustomFormControl = ({ name, classes }) => {
-  
 
+const CustomFormControl = () => {
+  
+  const classes = useStyles();
   
   const [NameValues, setNameValues] = useState([]);
   const [FindName, setFindName] = useState('');
@@ -114,7 +145,7 @@ const CustomFormControl = ({ name, classes }) => {
   };
     return(
         <FormControl className={classes.formControl} variant="outlined" margin="dense" fullWidth>
-            <InputLabel id="demo-mutiple-checkbox-label">{name}</InputLabel>
+            <InputLabel id="demo-mutiple-checkbox-label">{'Names'}</InputLabel>
             <Select
               labelId="demo-mutiple-checkbox-label"
               id="demo-mutiple-checkbox"
@@ -149,4 +180,4 @@ const CustomFormControl = ({ name, classes }) => {
 
 }
 
-export default withRoot(CustomFormControl);
+export default CustomFormControl;
